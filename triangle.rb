@@ -15,6 +15,13 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  raise TriangleError.new, "No sides should be equal or less than 0" if a <= 0 || b <= 0 || c <= 0 
+  if a + b <= c || b + c <= a || c + a <= b
+    raise TriangleError.new, "Sum of two sides should always outsum the other side" 
+  end
+  return :equilateral if a == b && b == c
+  return :isosceles if a == b || b == c || a == c
+  return :scalene
 end
 
 # Error class used in part 2.  No need to change this code.
